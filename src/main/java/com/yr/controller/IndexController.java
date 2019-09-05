@@ -30,7 +30,7 @@ public class IndexController {
     @RequestMapping("/users")
     public String users() {
 
-        return "/users";
+        return "/proxy/proxyTeacher";
     }
 
     @RequestMapping("/userFaceEdit")

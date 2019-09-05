@@ -50,10 +50,32 @@
                         <dd data-name="pwd"><a href="/pwd" target="option">修改密码</a>
                         </dd>
                     </dl>
-
+                <li class="layui-nav-item">
+                    <a href="javascript:;">招生老师管理</a>
+                    <dl class="layui-nav-child">
+                        <dd data-name="edit"><a href="/proxyTeacher" target="option">招生老师基本信息</a></dd>
+                        <dd data-name="pwd"><a href="/pwd" target="option">来访记录</a></dd>
+                    </dl>
 
                 <li class="layui-nav-item">
-                    <a href="/proxyTeacher" target="option">招生老师管理</a>
+                    <a href="javascript:;">学生管理</a>
+                    <dl class="layui-nav-child">
+                        <dd data-name="edit"><a href="/proxyTeacher" target="option">学生基本信息</a></dd>
+                        <dd data-name="pwd"><a href="/pwd" target="option">学生考试成绩录入</a></dd>
+                        <dd data-name="pwd"><a href="/pwd" target="option">考试成绩查询</a></dd>
+                        <dd data-name="edit"><a href="/proxyTeacher" target="option">分班系统</a></dd>
+
+                    </dl>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">财务</a>
+                    <dl class="layui-nav-child">
+                        <dd data-name="edit"><a href="/proxyTeacher" target="option">招生老师报销审核</a></dd>
+                        <dd data-name="pwd"><a href="/pwd" target="option">学生缴费信息</a></dd>
+                        <dd data-name="pwd"><a href="/pwd" target="option">学生家长来校报销</a></dd>
+                        <dd data-name="pwd"><a href="/pwd" target="option">招生老师提成</a></dd>
+                        <dd data-name="pwd"><a href="/pwd" target="option">学生缴费信息</a></dd>
+                    </dl>
+
 
             </ul>
         </div>
