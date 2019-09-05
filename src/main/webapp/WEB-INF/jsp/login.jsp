@@ -10,8 +10,8 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <link rel="stylesheet" href="layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="layuiadmin/style/admin.css" media="all">
-    <link rel="stylesheet" href="layuiadmin/style/login.css" media="all">
+    <link rel="stylesheet" href="layui/css/admin.css" media="all">
+    <link rel="stylesheet" href="layui/css/login.css" media="all">
     <script src="js/jquery.js"></script>
 </head>
 <body>
@@ -62,7 +62,7 @@
                 <a href="javascript:;"><i class="layui-icon layui-icon-login-wechat"></i></a>
                 <a href="javascript:;"><i class="layui-icon layui-icon-login-weibo"></i></a>
 
-                <a id="code_img" href="${pageContext.request.contextPath}/jsp/register.jsp"
+                <a id="code_img" href="/register"
                    class="layadmin-user-jump-change layadmin-link" style="margin-top: 7px;">注册帐号</a>
             </div>
         </div>

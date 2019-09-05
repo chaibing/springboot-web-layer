@@ -198,7 +198,6 @@ public class UserController {
             String cnt = session.getAttribute("code").toString();
             System.out.println("cnt:" + cnt);
             System.out.println(code.equals(cnt));
-
             if (code.equals(cnt)) {
                 User user = userService.login(username, password);
                 System.out.println("user:" + user);

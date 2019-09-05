@@ -27,7 +27,7 @@ layui.use(['laypage', 'layer', 'table', 'element', 'slider'], function () {
                 // console.log(data.toolName);
                 layer.open({
                     type: 2,
-                    title: '添加学员信息asdf',
+                    title: '添加学员信息',
                     // title:data.to,
                     shadeClose: true,
                     shade: 0.8,
@@ -35,9 +35,6 @@ layui.use(['laypage', 'layer', 'table', 'element', 'slider'], function () {
                     area: ['70%', '70%'],
 
                     content: 'studentAdd?toolSceneId=' + data.toolSceneId + '&' + 'id=' + data.id,
-
-
-
 
 
                     success: function (layero, index) {

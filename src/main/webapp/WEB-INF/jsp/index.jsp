@@ -51,6 +51,10 @@
                         </dd>
                     </dl>
 
+
+                <li class="layui-nav-item">
+                    <a href="/proxyTeacher" target="option">招生老师管理</a>
+
             </ul>
         </div>
     </div>

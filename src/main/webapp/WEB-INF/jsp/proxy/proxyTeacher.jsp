@@ -7,8 +7,14 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>layui在线调试</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/layui/css/layui.css" media="all">
     <style>
+        .divcss5 {
+            /*border: 1px solid #F00;*/
+            width: 100%;
+            height: 150px
+        }
+
         body {
             margin: 10px;
         }
@@ -19,10 +25,79 @@
             text-align: center;
         }
     </style>
-    <script src="${pageContext.request.contextPath}/js/jquery.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/jquery.js"></script>
 </head>
 <body>
+<h1>招生老师基本信息录入</h1>
 
+<hr/>
+<div class="divcss5">
+    <div class="layui-col-md12">
+        <div class="layui-card">
+            <div class="layui-card-header"></div>
+            <div class="layui-card-body" pad15="">
+
+                <form class="layui-form" action="">
+
+                    <div class="layui-form-item">
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label">姓名</label>
+                            <div class="layui-input-inline">
+                                <input name="name" lay-verify="required" autocomplete="off" class="layui-input"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">加入时间</label>
+                            <div class="layui-input-inline">
+                                <input name="sex" lay-verify="required" autocomplete="off" class="layui-input"
+                                       type="text">
+                            </div>
+                        </div>
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label">地址</label>
+                            <div class="layui-input-inline">
+                                <input name="city" lay-verify="required" autocomplete="off" class="layui-input"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">身份证</label>
+                            <div class="layui-input-inline">
+                                <input name="email" lay-verify="email" autocomplete="off" class="layui-input"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">上级人 </label>
+                            <div class="layui-input-inline">
+                                <input name="major" lay-verify="required" autocomplete="off" class="layui-input"
+                                       type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit="" lay-filter="editStudent">查询</button>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit="" lay-filter="editStudent">添加</button>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<h5>查询结果</h5>
+<hr/>
 <table class="layui-hide" id="demo" lay-filter="test"></table>
 
 <script type="text/html" id="barDemo">
@@ -32,11 +107,10 @@
 </script>
 <%--  //${pageContext.request.contextPath}/--%>
 <script src="layui/layui.js"></script>
-<%--
-<script src="js/tool.js"></script>
---%>
-<script>
 
+<script src="js/tool.js"></script>
+
+<script>
     layui.use(['laydate', 'laypage', 'layer', 'table', 'element', 'slider'], function () {
         var $ = layui.jquery
             , laydate = layui.laydate //日期
@@ -68,16 +142,18 @@
             , cols: [[ //表头
                 {type: 'checkbox', fixed: 'left'}
                 , {field: 'id', title: 'ID', width: 80, sort: true, fixed: 'left', totalRowText: '合计：'}
-                , {field: 'name', title: '用户名', width: 80}
+                , {field: 'name', title: '姓名', width: 80}
                 , {field: 'sex', title: '性别', width: 80,}
-                , {field: 'city', title: '城市', width: 100}
-                , {field: 'email', title: '邮箱', width: 150}
-                , {field: 'major', title: '专业', width: 80}
-                , {field: 'score', title: '成绩', width: 80, sort: true}
-                , {field: 'sign', title: '备注', width: 200}
+                , {field: 'city', title: '年龄', width: 100}
+                , {field: 'email', title: '身份证号', width: 150}
+                , {field: 'major', title: '地址', width: 80}
+                , {field: 'score', title: '级别', width: 80, sort: true}
+                , {field: 'sign', title: '上级姓名', width: 200}
+                , {field: 'major', title: '加入时间', width: 80}
+                , {field: 'score', title: '联系电话', width: 80, sort: true}
+                , {field: 'sign', title: '状态', width: 200}
                 , {fixed: 'right', width: 165, align: 'center', toolbar: '#barDemo'}
             ]]
-
         });
 
 
