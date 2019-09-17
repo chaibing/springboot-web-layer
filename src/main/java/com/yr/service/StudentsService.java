@@ -3,7 +3,7 @@ package com.yr.service;
 import java.util.List;
 
 import com.yr.dao.StudentsDao;
-import com.yr.entity.Students;
+import com.yr.model.Students;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,22 +1,21 @@
 package com.yr.dao;
 
-import com.yr.entity.User;
-import org.springframework.stereotype.Component;
+import com.yr.model.User;
 import org.springframework.stereotype.Repository;
 
 
 @Repository
 public interface UserDao {
-	
-	public User getUser(String username, String password);
 
-	public int changePwd(String username, String oldPassword, String repassword);
+    public User getUser(String username, String password);
 
-	public int uploadPic(String picUrl, String username);
+    public int changePwd(String username, String oldPassword, String repassword);
 
-	public User editUser(User user);
- 
-	public User getUserName(String username);
+    public int uploadPic(String picUrl, String username);
 
-	public int regUser(String username, String password);
+    public User editUser(User user);
+
+    public User getUserName(String username);
+
+    public int regUser(String username, String password);
 }

@@ -1,10 +1,7 @@
-package com.yr.dao.impl;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
+package com.yr.mapper;
 
 import com.yr.dao.UserDao;
-import com.yr.entity.User;
+import com.yr.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;

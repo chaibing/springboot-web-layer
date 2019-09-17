@@ -1,4 +1,4 @@
-package com.yr.entity;
+package com.yr.model;
 
 import lombok.Data;
 

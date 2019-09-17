@@ -29,33 +29,32 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/layui/layui.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/layui/data.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/layui/province.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/layui/tianjia.js"></script>
+
     <script type="text/javascript" src="js/tool.js"></script>
 </head>
 <body>
 
 <hr/>
 <div class="chaibing">
-    <%---------------------------------------------------------------%>
-    <form class="layui-form" action="/students/search">
+    <form class="layui-form" action="/proxy/lists">
         <input name="id" readonly="" autocomplete="off" class="layui-input" type="hidden" value=0>
         <div class="layui-form-item">
             <div class="layui-inline">
                 <label class="layui-form-label">姓名</label>
                 <div class="layui-input-inline">
-                    <input name="name" lay-verify="required" autocomplete="off" class="layui-input" type="text">
+                    <input name="name" <%-- 必填项lay-verify="required" --%>autocomplete="off" class="layui-input"
+                           type="text">
                 </div>
             </div>
             <div class="layui-inline">
                 <label class="layui-form-label">加入时间 </label>
                 <div class="layui-input-inline">
-                    <input type="text" class="layui-input" id="test1" name="score" lay-verify="required|number"
+                    <input type="text" class="layui-input" id="test1" name="score"  <%--lay-verify="required|number"--%>
                            autocomplete="off">
                 </div>
 
             </div>
-
-
-            <%--eeeeeee--%>
 
             <label class="layui-form-label">地址：</label>
             <div class="layui-input-inline">
@@ -73,20 +72,19 @@
                     <option value="">请选择县/区</option>
                 </select>
             </div>
-            <%--eeeeeeeeee--%>
 
 
             <div class="layui-inline">
                 <label class="layui-form-label">身份证 </label>
                 <div class="layui-input-inline">
-                    <input name="major" lay-verify="required" autocomplete="off" class="layui-input"
+                    <input name="major" lay-verify="identity" autocomplete="off" class="layui-input"
                            type="text">
                 </div>
             </div>
             <div class="layui-inline">
                 <label class="layui-form-label">上级人 </label>
                 <div class="layui-input-inline">
-                    <input name="major" lay-verify="required" autocomplete="off" class="layui-input"
+                    <input name="major" autocomplete="off" class="layui-input"
                            type="text">
                 </div>
             </div>
@@ -97,27 +95,201 @@
             </div>
         </div>
 
-        <div class="layui-inline">
+
+    </form>
+    <div>
+        <table class="layui-hide"  id="test" lay-filter="table"></table>
+        <button class="layui-btn layui-btn-normal" onclick="chaibing()">新增</button>
+    </div>
+
+</div>
+<!--添加或编辑-->
+<div id="setRole" class="layer_self_wrap" style="width:100%;display:none;">
+    <form id="roleForm" class="layui-form layui-form-pane" method="post" action="/proxy/addteacher"
+          style="margin-top: 20px;">
+        <input id="pageNum" type="hidden" name="pageNum"/>
+        <input id="id" type="hidden" name="id"/>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">姓名<span style="color:red">*</span></label>
+            <div class="layui-input-inline">
+                <input id="roleName" name="name" autocomplete="off" class="layui-input"
+                       type="text"/>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">性别<span style="color:red">*</span></label>
             <div class="layui-input-block">
-                <button class="layui-btn" lay-submit="" lay-filter="addStudent">添加</button>
+                <input type="radio" name="sex" value="男" title="男">
+                <input type="radio" name="sex" value="女" title="女" checked>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">身份证号<span style="color:red">*</span></label>
+            <div class="layui-input-inline">
+                <input type="text" id="Gra_IDCard" name="idcard" class="layui-input" onChange="IDCardChange()"/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">年龄<span style="color:red">*</span></label>
+            <div class="layui-input-inline">
+                <input name="age" type="number" class="layui-input" readonly="readonly" id="Gra_Age"/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">电话<span style="color:red">*</span></label>
+            <div class="layui-input-inline">
+                <input id="roleDesc5" name="phone" autocomplete="off" class="layui-input"
+                       type="text"/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div>
+                <label class="layui-form-label">地址<span style="color:red">*</span></label>
+                <div class="layui-input-inline">
+                    <select name="provid" id="provid1" lay-filter="provid">
+                        <option value="">请选择省</option>
+                    </select>
+                </div>
+                <div class="layui-input-inline">
+                    <select name="cityid" id="cityid1" lay-filter="cityid">
+                        <option value="">请选择市</option>
+                    </select>
+                </div>
+                <div class="layui-input-inline">
+                    <select name="areaid" id="areaid1" lay-filter="areaid">
+                        <option value="">请选择县/区</option>
+                    </select>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">加入时间<span style="color:red">*</span></label>
+            <div class="layui-input-inline">
+                <input name="join_date" autocomplete="off" class="layui-input" type="text" id="test11"/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">级别<span style="color:red">*</span></label>
+            <div class="layui-input-inline">
+                <select name="level_code" xm-select="permissions">
+                    <option value="1">----请选择-----</option>
+                    <option value="1">p1</option>
+                    <option value="2">p2</option>
+
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">点位<span style="color:red">*</span></label>
+            <div class="layui-input-inline">
+                <input id="roleDesrc3" readonly="readonly" name="roleDesc" autocomplete="off" class="layui-input"  type="text"/>
+
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">上级人姓名<span style="color:red">*</span></label>
+            <div class="layui-input-inline">
+                <input id="aa" name="roleDesc" lautocomplete="off" class="layui-input"
+                       type="text"/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">身份证号<span style="color:red">*</span></label>
+            <div class="layui-input-inline">
+                <input id="rr" name="roleDesc" lay-verify="identity" autocomplete="off"
+                       class="layui-input"
+                       type="text"/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">状态<span style="color:red">*</span></label>
+            <div class="layui-input-inline">
+                <select name="permissions" xm-select="permissions">
+                    <option value="1">----请选择-----</option>
+                    <option value="1">在职</option>
+                    <option value="2">离职</option>
+
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">权限<span style="color:red">*</span></label>
+            <div class="layui-input-inline">
+                <select name="permissions" xm-select="permissions">
+                    <option value="1">----请选择-----</option>
+                    <option value="1">北京</option>
+                    <option value="2">上海</option>
+                    <option value="3">广州</option>
+                    <option value="4">深圳</option>
+                    <option value="5">天津</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">微信</label>
+            <div class="layui-input-inline">
+                <input id="tt11" name="wx" autocomplete="off" class="layui-input" type="text"/>
+
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">qq</label>
+            <div class="layui-input-inline">
+                <input id="22" name="qq" autocomplete="off" class="layui-input"
+                       type="text"/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">银行卡</label>
+            <div class="layui-input-inline">
+                <input id="tt" name="roleDesc" autocomplete="off" class="layui-input"
+                       type="text"/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">备注</label>
+            <div class="layui-input-inline">
+                <input id="rr1" name="roleDesc" autocomplete="off" class="layui-input"
+                       type="text"/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block" style="margin-left: 10px;">
+                <button class="layui-btn" lay-submit="" lay-filter="roleSubmit">提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </div>
     </form>
-    <%-------------------------------------------------------------%>
 </div>
+
+
 <hr/>
 <span>查询结果</span>
 <table class="layui-hide" id="demo" lay-filter="test"></table>
-<span>操作</span>
-<a><span>操作</span></a>
-<script type="text/html" id="barDemo">
 
+<script type="text/html" id="barDemo">
     <a name="ss" class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">详情</a>
-    <%-- <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>--%>
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
 
+<script>
+    layui.use('laydate', function () {
+        var laydate = layui.laydate;
 
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#test11' //指定元素
+        });
+    });
+</script>
 <script>
     var defaults = {
         s1: 'provid',
@@ -152,7 +324,7 @@
         table.render({
             elem: '#demo'
             , height: 420
-            , url: '${pageContext.request.contextPath}/students/students' //数据接口
+            , url: '${pageContext.request.contextPath}/proxy/lists' //数据接口
             , limit: 10
             //,page:true(自带的这个要注掉)
             , page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
@@ -168,17 +340,17 @@
             , cols: [[ //表头
                 {type: 'checkbox', fixed: 'left'}
                 , {field: 'id', title: 'ID', width: 0, sort: true, fixed: 'left', totalRowText: '合计：'}
-                , {field: 'name', title: '姓名', width: 70}
-                , {field: 'sex', title: '性别', width: 50,}
-                , {field: 'city', title: '年龄', width: 100}
-                , {field: 'email', title: '身份证号', width: 200, sort: true}
-                , {field: 'major', title: '地址', width: 100}
-                , {field: 'sign', title: '级别', width: 100}
-                , {field: 'sign', title: '上级姓名', width: 150}
-                , {field: 'score', title: '加入时间', width: 150}
-                , {field: 'sign', title: '联系电话', width: 150}
-                , {field: 'sign', title: '状态', width: 150}
-                , {field: '     ss', title: '操作', width: 150}
+                , {field: 'name', title: '姓名', width: 90}
+                , {field: 'sex', title: '性别', width: 70,}
+                , {field: 'number', title: '年龄', width: 100}
+                , {field: 'idcard', title: '身份证号', width: 200, sort: true}
+                , {field: 'area_code', title: '地址', width: 100}
+                , {field: 'x', title: '级别', width: 100}
+                , {field: 'x', title: '上级姓名', width: 100}
+                , {field: 'join_date', title: '加入时间', width: 150}
+                , {field: 'phone', title: '联系电话', width: 150}
+                , {field: 'del', title: '状态', width: 150}
+                , {field: 'xx', title: '操作', width: 150}
                 , {fixed: 'right', width: 165, align: 'center', toolbar: '#barDemo'}
             ]]
 
@@ -276,6 +448,79 @@
 
 
     });
+</script>
+<%--根据身份证号计算年龄https://blog.csdn.net/weixin_34293902/article/details/86084979--%>
+<script>
+    //身份证改变事件（孕妇）
+    var IDCardChange = function () {
+        //获取身份证号
+        var idCard = $('#Gra_IDCard').val();
+        //判断身份证长度
+        if (idCard.length == 18) {
+            //获取计算后出生日期
+            var birthDateStr = getBirthDate(idCard);
+            //设置出生日期
+            $('#Gra_BirthDate').val(birthDateStr);
+
+            //获取当前的日期
+            var nowDateStr = getNowDate();
+            //获取计算后年龄(两个日期之间)
+            var age = getAge(birthDateStr, nowDateStr);
+            //设置年龄
+            $('#Gra_Age').val(age);
+        }
+    }
+
+    //根据身份证号计算出生日期
+    var getBirthDate = function (IDCard) {
+        //获取身份证号的年、月、日
+        var year = IDCard.substring(6, 10);
+        var month = IDCard.substring(10, 12);
+        var day = IDCard.substring(12, 14);
+        //拼接成出生日期
+        var birthDate = year + '-' + month + '-' + day;
+        return birthDate;
+    }
+
+    //根据两个日期计算年龄（是否过生日）
+    var getAge = function (startDateStr, endDateStr) {
+        //计算两个日期相差多少年
+        var startDate = new Date(startDateStr);
+        var endDate = new Date(endDateStr);
+        var yearNum = endDate.getFullYear() - startDate.getFullYear();
+        //获取两个日期（月+日）部分
+        var sStr = startDateStr.substring(5, 10);
+        var eStr = endDateStr.substring(5, 10);
+        //判断两个日期大小
+        //判断是否过生日
+        if (new Date(sStr) <= new Date(eStr)) {
+            return yearNum + 1;
+        } else {
+            return yearNum;
+        }
+    }
+
+    ///获取当前日期
+    var getNowDate = function () {
+        var d = new Date();
+        var year = d.getFullYear();
+        var month = d.getMonth() + 1;
+        var day = d.getDate();
+        var dateStr = year + '-' + getFormatDate(month) + '-' + getFormatDate(day);
+        return dateStr;
+    }
+
+    //格式化日期的月份或天数的显示（小于10，在前面增加0）
+    function getFormatDate(value) {
+        if (value == undefined || value == "") {
+            return '';
+        }
+        var str = value;
+        if (parseInt(value) < 10) {
+            str = '0' + value;
+        }
+        return str;
+    }
 </script>
 </body>
 </html>

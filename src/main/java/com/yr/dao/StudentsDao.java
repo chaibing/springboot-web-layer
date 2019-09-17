@@ -2,8 +2,7 @@ package com.yr.dao;
 
 import java.util.List;
 
-import com.yr.entity.Students;
-import org.springframework.stereotype.Component;
+import com.yr.model.Students;
 import org.springframework.stereotype.Repository;
 
 @Repository

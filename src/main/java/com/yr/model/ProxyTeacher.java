@@ -1,13 +1,16 @@
-package com.yr.entity;
+package com.yr.model;
 
 import lombok.Data;
+
+import java.io.Serializable;
 
 /**
  * @author: chaiyingibng
  * @create: 2019-09-05 15:35
  **/
 @Data
-public class ProxyTeacher {
+public class ProxyTeacher  implements Serializable
+{
     private Integer id;
     private String number; //年龄
     private String name;
@@ -20,7 +23,16 @@ public class ProxyTeacher {
     private String qq;
     private String vx;
     private String phone;//联系电话
+
+        public ProxyTeacher(Integer id, String number, String name) {
+            this.id = id;
+            this.number = number;
+            this.name = name;
+        }
+
     private String leader_id;                                //上级姓名
     private String del; //状态
 
+    public ProxyTeacher() {
+    }
 }

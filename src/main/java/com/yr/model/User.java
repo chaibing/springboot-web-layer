@@ -1,7 +1,6 @@
-package com.yr.entity;
+package com.yr.model;
 
 import lombok.Data;
-import lombok.Lombok;
 
 @Data
 public class User {

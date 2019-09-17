@@ -1,9 +1,9 @@
-package com.yr.dao.impl;
+package com.yr.mapper;
 
 import java.util.List;
 
 import com.yr.dao.StudentsDao;
-import com.yr.entity.Students;
+import com.yr.model.Students;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -58,6 +58,7 @@ public class StudentDaoImpl implements StudentsDao {
     }
 
 
+
     @Override
     public List<Students> getStudentsCount(int page, int pageSize) {
         int start = (page - 1) * pageSize;
@@ -66,5 +67,4 @@ public class StudentDaoImpl implements StudentsDao {
         List<Students> students = jdbcTemplate.query(sql, rowMapper, pageSize);
         return students;
     }
-
 }

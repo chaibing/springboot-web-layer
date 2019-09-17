@@ -2,7 +2,7 @@ package com.yr.service;
 
 
 import com.yr.dao.UserDao;
-import com.yr.entity.User;
+import com.yr.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

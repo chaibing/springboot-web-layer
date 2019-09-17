@@ -30,11 +30,9 @@
     <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
-<%--  //${pageContext.request.contextPath}/--%>
-<script src="layui/layui.js"></script>
-<%--
-<script src="js/tool.js"></script>
---%>
+
+<script type="text/javascript" src="${pageContext.request.contextPath}/layui/layui.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/tool.js"></script>
 <script>
 
     layui.use(['laydate', 'laypage', 'layer', 'table', 'element', 'slider'], function () {

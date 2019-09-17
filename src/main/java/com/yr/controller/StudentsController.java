@@ -8,7 +8,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 
-import com.yr.entity.Students;
+import com.yr.model.Students;
 import com.yr.service.StudentsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -83,15 +83,13 @@ public class StudentsController {
 	@RequestMapping(value = "students")
 	public Map<String,Object> showStudents(int page, int limit) throws IOException{
 		List<Students> students = studentsService.getStudents();
-		List<Students> student = studentsService.getStudentsCount(page,limit); 
+		List<Students> student = studentsService.getStudentsCount(page,limit);
 		
 		Map<String,Object> tableData =new HashMap<String,Object>();
 		tableData.put("code", 0);
 		tableData.put("msg", "");
 		tableData.put("count", students.size());
 		tableData.put("data", student);
-		System.out.println("tableData:"+tableData);
 	    return tableData;
-		 
 	    }
 }

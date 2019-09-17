@@ -1,4 +1,5 @@
 layui.use(['laypage', 'layer', 'table', 'element', 'slider'], function () {
+
     var $ = layui.jquery
         , laypage = layui.laypage //分页
         , layer = layui.layer //弹层
@@ -8,7 +9,7 @@ layui.use(['laypage', 'layer', 'table', 'element', 'slider'], function () {
         , tableObj = table.render({});
 
 //监听头工具栏事件
-    table.on('toolbar(test)', function (obj) {
+    table.on('submit(addSubmit)', function (obj) {
         var checkStatus = table.checkStatus(obj.config.id)
             , data = checkStatus.data //获取选中的数据
             , editList = [];
@@ -117,6 +118,28 @@ layui.use(['laypage', 'layer', 'table', 'element', 'slider'], function () {
         ;
     });
 
+
+
+
+
+
+
+
+    /*---------------------------------------------*/
+/*
+//监听提交
+    form.on('submit(addSubmit)', function (data) {
+        $.post("student/add_studentHd", data.field, function (res) {
+            if (res.status) {
+                layer.msg(res.info, {time: 2000});
+                var url = "{:U('student/student_lists')}"; //
+                setTimeout(window.location.href = url, 2000);
+            } else {
+                layer.msg(res.info, {time: 2000});
+            }
+        }, 'json');
+        return false;
+    });*/
 
 });
  

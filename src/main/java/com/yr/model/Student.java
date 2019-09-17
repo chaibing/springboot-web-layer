@@ -1,8 +1,7 @@
-package com.yr.entity;
+package com.yr.model;
 
 import lombok.Data;
 
-import javax.annotation.sql.DataSourceDefinition;
 import java.sql.Date;
 
 /**
