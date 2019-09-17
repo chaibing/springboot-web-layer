@@ -2,6 +2,7 @@ package com.yr.service.impl;
 
 import com.yr.dao.ProxyTeacherDao;
 import com.yr.model.ProxyTeacher;
+import com.yr.model.Rank;
 import com.yr.service.ProxYTeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,5 +31,18 @@ public class ProxYTeacherServiceImpl implements ProxYTeacherService {
         int start = (page - 1) * limit;
         List<ProxyTeacher> alladPageLimtit = proxYTeacherDao.findAlladPageLimtit(start, limit);
         return alladPageLimtit;
+    }
+
+
+    @Override
+    public List<Rank> findrank() {
+        List<Rank> findrank = proxYTeacherDao.findrank();
+
+        return findrank;
+    }
+
+    @Override
+    public void addProxyTeacher(ProxyTeacher proxyTeacher){
+        proxYTeacherDao.addProxyTeacher(proxyTeacher);
     }
 }

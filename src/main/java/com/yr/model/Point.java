@@ -6,21 +6,21 @@ import java.io.Serializable;
 
 /**
  * @author: chaiyingibng
- * @create: 2019-09-05 16:05
- * 级别
+ * @create: 2019-09-17 14:18
+ * 点位表
  **/
 @Data
-public class Level implements Serializable {
+public class Point implements Serializable {
 
 
     private Integer id;
-    private String code;
+    private Double points;
 
     @Override
     public String toString() {
-        return "Level{" +
+        return "Point{" +
                 "id=" + id +
-                ", code='" + code + '\'' +
+                ", points=" + points +
                 '}';
     }
 }

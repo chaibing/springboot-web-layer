@@ -5,10 +5,8 @@ function chaibing() {
 
 //打开编辑框
 function edit() {
-    alert("sdaf")
-
-
     /*向后台发送数据  start*/
+/*
     layui.use(['form', 'layer', 'table'], function () {
         var table = layui.table
             , form = layui.form, $ = layui.$;
@@ -34,12 +32,15 @@ function edit() {
             , id: 'testReload'
         });
     });
+*/
     /*向后台发送数据  end*/
 
 
     layer.open({
         type: 1,
+/*
         title: title,
+*/
         fixed: false,
         resize: false,
         shadeClose: true,

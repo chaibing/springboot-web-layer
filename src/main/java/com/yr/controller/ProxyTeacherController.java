@@ -1,6 +1,7 @@
 package com.yr.controller;
 
 import com.yr.model.ProxyTeacher;
+import com.yr.model.Rank;
 import com.yr.service.ProxYTeacherService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,16 +40,24 @@ public class ProxyTeacherController {
         pts.put("msg", "");
         pts.put("count", count.size());
         pts.put("data", proxyTeachers);
-        log.info("我的数据打印" + pts.get("count") + "      " + pts.get("data"));
         return pts;
     }
 
     @RequestMapping("/addteacher")
-    public String addteacher() {
-
-
+    public String addProxyTeacher(ProxyTeacher proxyTeacher) {
+            System.out.println(proxyTeacher+"   "+"获取数据");
+        ProxYTeacherService.addProxyTeacher(proxyTeacher);
         return "proxy/proxyTeacher";
     }
 
+
+    //查询级别
+    @RequestMapping("/xialakuang")
+    @ResponseBody
+    public List<Rank> findall() {
+        List<Rank> findrank = ProxYTeacherService.findrank();
+        return findrank;
+
+    }
 
 }

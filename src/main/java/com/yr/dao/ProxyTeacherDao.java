@@ -2,10 +2,9 @@ package com.yr.dao;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.yr.model.ProxyTeacher;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import com.yr.model.Rank;
+import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.mapping.FetchType;
 import org.apache.ibatis.type.JdbcType;
 import org.springframework.stereotype.Repository;
 
@@ -43,5 +42,15 @@ public interface ProxyTeacherDao extends BaseMapper<ProxyTeacher> {
     )
     public List<ProxyTeacher> findAlladPageLimtit(int start, int limit);
 
+    //    @Select(" SELECT r.*,p.* FROM rank r,point p where r.id=p.rank_id")
+    @Select("SELECT * FROM rank")
+    @Results({
+            @Result(column = "id", property = "id", javaType = Integer.class),
+            @Result(column = "name", property = "name", javaType = String.class),
+            @Result(column = "id", property = "point", one = @One(select = "com.yr.dao.PointDao.selectByrankId", fetchType = FetchType.EAGER))
+    })
 
+    public List<Rank> findrank();
+    @Insert("")
+    public void addProxyTeacher(ProxyTeacher proxyTeacher);
 }
