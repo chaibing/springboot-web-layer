@@ -185,6 +185,7 @@ a cite {
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale
+
 }
 
 .layui-icon-reply-fill:before {
@@ -2156,7 +2157,7 @@ a cite {
 }
 
 :root .layui-form-selected .layui-edge {
-    margin-top: -9px \0/ IE9
+    margin-top: -9px
 }
 
 .layui-form-selectup dl {

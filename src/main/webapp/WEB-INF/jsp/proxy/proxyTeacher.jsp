@@ -175,96 +175,116 @@
         <div class="layui-form-item">
             <label class="layui-form-label">级别<span style="color:red">*</span></label>
             <div class="layui-input-inline ">
-                <select type="text" name="level_code" id="selectcid"  onchange="jibie()" >
+                <select type="text" name="level_code" id="selectcid" onchange="jibie()">
                     <option value="0">请选择</option>
                 </select>
             </div>
         </div>
         <div class="layui-form-item">
-                <label class="layui-form-label">点位<span style="color:red">*</span></label>
-                <div class="layui-input-inline">
-                    <input id="roleDesrc3"<%-- readonly="readonly" --%>name="sdafa" autocomplete="off"
-                           class="layui-input" type="text"/>
+            <label class="layui-form-label">点位<span style="color:red">*</span></label>
+            <div class="layui-input-inline">
+                <input id="roleDesrc3" <%-- readonly="readonly" --%>name="sdafa" autocomplete="off"
+                       class="layui-input" type="text"/>
 
-                </div>
             </div>
+        </div>
 
-            <div class="layui-form-item">
-                <label class="layui-form-label">上级人姓名<span style="color:red">*</span></label>
-                <div class="layui-input-inline">
-                    <input id="aa" name="roleDesc" lautocomplete="off" class="layui-input"
-                           type="text"/>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">身份证号<span style="color:red">*</span></label>
-                <div class="layui-input-inline">
-                    <input id="rr" name="roleDesc" lay-verify="identity" autocomplete="off"
-                           class="layui-input"
-                           type="text"/>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">状态<span style="color:red">*</span></label>
-                <div class="layui-input-inline">
-                    <select name="permissions" xm-select="permissions">
-                        <option value="1">----请选择-----</option>
-                        <option value="1">在职</option>
-                        <option value="2">离职</option>
 
-                    </select>
-                </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">上级人姓名<span style="color:red">*</span></label>
+            <div class="layui-input-inline ">
+                <select type="text" name="level_code" id="selectcid1" onchange="jibie()">
+                    <option value="0">请选择</option>
+                </select>
             </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">身份证号<span style="color:red">*</span></label>
+            <div class="layui-input-inline">
+                <input id="roleDesrc31" readonly="readonly" name="sdafa" autocomplete="off"
+                       class="layui-input" type="text"/>
 
-            <div class="layui-form-item">
-                <label class="layui-form-label">权限<span style="color:red">*</span></label>
-                <div class="layui-input-inline">
-                    <select name="permissions" xm-select="permissions">
-                        <option value="1">----请选择-----</option>
-                        <option value="1">北京</option>
-                        <option value="2">上海</option>
-                        <option value="3">广州</option>
-                        <option value="4">深圳</option>
-                        <option value="5">天津</option>
-                    </select>
-                </div>
             </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">微信</label>
-                <div class="layui-input-inline">
-                    <input id="tt11" name="vx" autocomplete="off" class="layui-input" type="text"/>
+        </div>
 
-                </div>
+        <%--
+               <div class="layui-form-item">
+                   <label class="layui-form-label">上级人姓名<span style="color:red">*</span></label>
+                   <div class="layui-input-inline">
+                       <input id="aa" name="name" lautocomplete="off" class="layui-input"
+                              type="text"/>
+                   </div>
+               </div>
+               <div class="layui-form-item">
+                   <label class="layui-form-label">身份证号<span style="color:red">*</span></label>
+                   <div class="layui-input-inline">
+                       <input id="idcard" name="roleDesc" lay-verify="identity"
+                              class="layui-input"
+                              type="text"/>
+                   </div>
+               </div>--%>
+        <div class="layui-form-item">
+            <label class="layui-form-label">状态<span style="color:red">*</span></label>
+            <div class="layui-input-inline">
+                <select name="permissions" xm-select="permissions">
+                    <option value="1">----请选择-----</option>
+                    <option value="1">在职</option>
+                    <option value="2">离职</option>
+
+                </select>
             </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">qq</label>
-                <div class="layui-input-inline">
-                    <input id="22" name="qq" autocomplete="off" class="layui-input"
-                           type="text"/>
-                </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">权限<span style="color:red">*</span></label>
+            <div class="layui-input-inline">
+                <select name="permissions" xm-select="permissions">
+                    <option value="1">----请选择-----</option>
+                    <option value="1">北京</option>
+                    <option value="2">上海</option>
+                    <option value="3">广州</option>
+                    <option value="4">深圳</option>
+                    <option value="5">天津</option>
+                </select>
             </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">银行卡</label>
-                <div class="layui-input-inline">
-                    <input id="tt" name="roleDesc" autocomplete="off" class="layui-input"
-                           type="text"/>
-                </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">微信</label>
+            <div class="layui-input-inline">
+                <input id="tt11" name="vx" autocomplete="off" class="layui-input" type="text"/>
+
             </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">备注</label>
-                <div class="layui-input-inline">
-                    <input id="rr1" name="roleDesc" autocomplete="off" class="layui-input"
-                           type="text"/>
-                </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">qq</label>
+            <div class="layui-input-inline">
+                <input id="22" name="qq" autocomplete="off" class="layui-input"
+                       type="text"/>
             </div>
-            <div class="layui-form-item">
-                <div class="layui-input-block" style="margin-left: 10px;">
-                    <button class="layui-btn" lay-submit="" lay-filter="roleSubmit">提交</button>
-                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-                </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">银行卡</label>
+            <div class="layui-input-inline">
+                <button type="button" class="layui-btn" id="yinhangka">
+                    <i class="layui-icon">&#xe67c;</i>上传图片
+                </button>
             </div>
 
         </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">备注</label>
+            <div class="layui-input-inline">
+                <input id="rr1" name="roleDesc" autocomplete="off" class="layui-input"
+                       type="text"/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block" style="margin-left: 10px;">
+                <button class="layui-btn" lay-submit="" lay-filter="roleSubmit">提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+
     </form>
 </div>
 <hr/>
@@ -340,7 +360,7 @@
                 , {field: 'name', title: '姓名', width: 90}
                 , {field: 'sex', title: '性别', width: 70,}
                 , {field: 'number', title: '年龄', width: 100}
-                , {field: 'idcard', title: '身份证号', width: 200, sort: true}
+                , {field: 'idcard', title: '身份证号', width: 230, sort: true}
                 , {field: 'area_code', title: '地址', width: 100}
                 , {field: 'x', title: '级别', width: 100}
                 , {field: 'x', title: '上级姓名', width: 100}
@@ -549,7 +569,6 @@
 <%--表单下拉框动态获取数据  https://blog.csdn.net/duguyuyun12345/article/details/82818193  end--%>
 
 
-
 <%--根据 级别获取点位========================================== start --%>
 
 <script>
@@ -628,8 +647,32 @@
 
 <%--根据 级别获取点位=====================================================   end--%>
 
+<%--银行卡获取图片===================================================      start--%>
+<script>
+    layui.use('upload', function () {
+
+        var upload = layui.upload;
 
 
+        //执行实例
+        var uploadInst = upload.render({
+                elem: '#yinhangka' //绑定元素
+                , acceptMime: 'image/!*'//（只显示图片文件）
+                , url: '/oss/uploadFile' //上传接口
+                , done:
+                    function (res) {
+                        //上传完毕回调
+                    }
+                ,
+                error: function () {
+                    //请求异常回调
+                    alert("文件上传异常")
+                }
+            })
+        ;
+    });
+</script>
+<%--银行卡获取图片===================================================      end--%>
 
 </body>
 </html>
