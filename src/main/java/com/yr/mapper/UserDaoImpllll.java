@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public class UserDaoImpl implements UserDao {
+public class UserDaoImpllll {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 	
@@ -30,7 +30,6 @@ public class UserDaoImpl implements UserDao {
 		
 	};*/
 	 
-	@Override
 	public User getUserName(String username) {
 		
 		RowMapper<User> rowMapper=new BeanPropertyRowMapper<>(User.class);
@@ -59,7 +58,6 @@ public class UserDaoImpl implements UserDao {
 		return user;
 	}
  
-	@Override
 	public int regUser(String username, String password) {
 		String sql = "INSERT INTO user(username,password) VALUES (?,?);";
 		int result = 0;
@@ -85,7 +83,7 @@ public class UserDaoImpl implements UserDao {
 		return result;
 	}
 
-	@Override
+
 	public int uploadPic(String picUrl, String username) {
 		String sql = "update user set picture=? where username=?";
 		int result = 0;
@@ -98,7 +96,6 @@ public class UserDaoImpl implements UserDao {
 		return result;
 	}
 
-	@Override
 	public User editUser(User user) {
 		String sql = "update user set sex=?,phone=?,email=? where username=?";
 		int result = 0;

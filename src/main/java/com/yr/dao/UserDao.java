@@ -1,10 +1,14 @@
 package com.yr.dao;
 
 import com.yr.model.User;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 
-@Repository
+@Mapper
 public interface UserDao {
 
     public User getUser(String username, String password);
@@ -15,7 +19,13 @@ public interface UserDao {
 
     public User editUser(User user);
 
+    @Select("select * from user where username=#{username}")
+
     public User getUserName(String username);
 
     public int regUser(String username, String password);
+
+    @Insert("INSERT INTO user(username,password) VALUES (#{username},#{password})")
+    @Options(useGeneratedKeys = true, keyColumn = "id")
+    public Integer register(String username, String password);
 }

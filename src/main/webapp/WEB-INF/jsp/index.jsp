@@ -1,112 +1,136 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
+<%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<link rel="stylesheet" href="layui/css/layui.css" media="all">
-<!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
-<script src="layui/layui.js"></script>
-
+<head>
+    <meta charset="utf-8">
+    <title>登录管理系统</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="layui/css/admin.css" media="all">
+    <link rel="stylesheet" href="layui/css/login.css" media="all">
+    <script src="js/jquery.js"></script>
 </head>
-<body class="layui-layout-body ">
-<div class="layui-layout  layui-layout-admin">
-    <div class="layui-header ">
-        <div class="layui-logo">后台管理</div>
-        <!-- 头部区域（可配合layui已有的水平导航） -->
-        <ul class="layui-nav  layui-layout-left">
-            <li class="layui-nav-item"><a href="">用户</a></li>
-            <li class="layui-nav-item">
-                <a href="javascript:;">其它系统</a>
-                <dl class="layui-nav-child">
-                    <dd><a href="">邮件管理</a></dd>
-                    <dd><a href="">消息管理</a></dd>
-                    <dd><a href="">授权管理</a></dd>
-                </dl>
-            </li>
-        </ul>
-        <ul class="layui-nav layui-layout-right">
-            <li class="layui-nav-item">
-                <a href="javascript:;">
-                    <img src="${pageContext.request.contextPath}/${sessionScope.user.picture}" class="layui-nav-img">
-                    ${sessionScope.user.username}
-                </a>
-                <dl class="layui-nav-child">
-                    <dd><a href="/userFaceEdit" target="option">基本资料</a></dd>
-                    <!-- <dd><a href="">安全设置</a></dd> -->
-                </dl>
-            </li>
-            <li class="lay  ui-nav-item"><a href="layuiadmin/loginout">退出</a></li>
-        </ul>
-    </div>
+<body>
 
-    <div class="layui-side layui-bg-black">
-        <div class="layui-side-scroll">
-            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-            <ul class="layui-nav layui-nav-tree " lay-filter="test">
+<div class="layadmin-user-login layadmin-user-display-show" id="LAY-user-login" style="display: none;">
 
-                <li class="layui-nav-item">
-                    <a href="javascript:;">用户管理</a>
-                    <dl class="layui-nav-child">
-                        <dd data-name="edit"><a href="/userEdit" target="option">修改信息</a></dd>
-                        <dd data-name="pwd"><a href="/pwd" target="option">修改密码</a>
-                        </dd>
-                    </dl>
-                <li class="layui-nav-item">
-                    <a href="javascript:;">招生老师管理</a>
-                    <dl class="layui-nav-child">
-                        <dd data-name="edit"><a href="/proxyTeacher" target="option">招生老师基本信息</a></dd>
-                        <dd data-name="pwd"><a href="/pwd" target="option">来访记录</a></dd>
-                    </dl>
+    <div class="layadmin-user-login-main">
+        <div class="layadmin-user-login-box layadmin-user-login-header">
+            <h2>招生老师管理系统</h2>
+            <p>登陆</p>
+        </div>
+        <div class="layadmin-user-login-box layadmin-user-login-body layui-form">
+            <div class="layui-form-item">
+                <label class="layadmin-user-login-icon layui-icon layui-icon-username" for="login-username"></label>
+                <input type="text" name="username" id="login-username" lay-verify="required" placeholder="用户名"
+                       class="layui-input" value="${username}">
+            </div>
+            <div class="layui-form-item">
+                <label class="layadmin-user-login-icon layui-icon layui-icon-password" for="login-password"></label>
+                <input type="password" name="password" id="login-password" lay-verify="required" placeholder="密码"
+                       class="layui-input" value="${password}">
+            </div>
+            <%--  验证码
+            <div class="layui-form-item">
+                  <div class="layui-row">
+                      <div class="layui-col-xs7">
+                          <label class="layadmin-user-login-icon layui-icon layui-icon-vercode"
+                                 for="LAY-user-login-vercode"></label>
+                          <input type="text" name="vercode" id="login-vercode" lay-verify="required" placeholder="图形验证码"
+                                 class="layui-input">
+                      </div>
+                      <div class="layui-col-xs5">
+                          <div style="margin-left: 10px;">
+                              <img src="layuiadmin/verifyCode" id="code_img">
+                          </div>
+                      </div>
+                  </div>
+              </div>--%>
+            <div class="layui-form-item" style="margin-bottom: 20px;">
+                <input type="checkbox" name="remember" lay-skin="primary" title="记住密码">
+                <!-- <a href="forget.html" class="layadmin-user-jump-change layadmin-link" style="margin-top: 7px;">忘记密码？</a> -->
+            </div>
+            <div class="layui-form-item">
+                <button class="layui-btn layui-btn-fluid" lay-submit lay-filter="LAY-user-login-submit">登 入</button>
+            </div>
+            <div class="layui-trans layui-form-item layadmin-user-login-other">
+                <label>社交账号登入</label>
+                <a href="javascript:;"><i class="layui-icon layui-icon-login-qq"></i></a>
+                <a href="javascript:;"><i class="layui-icon layui-icon-login-wechat"></i></a>
+                <a href="javascript:;"><i class="layui-icon layui-icon-login-weibo"></i></a>
 
-                <li class="layui-nav-item">
-                    <a href="javascript:;">学生管理</a>
-                    <dl class="layui-nav-child">
-                        <dd data-name="edit"><a href="/proxyTeacher" target="option">学生基本信息</a></dd>
-                        <dd data-name="pwd"><a href="/pwd" target="option">学生考试成绩录入</a></dd>
-                        <dd data-name="pwd"><a href="/pwd" target="option">考试成绩查询</a></dd>
-                        <dd data-name="edit"><a href="/proxyTeacher" target="option">分班系统</a></dd>
-
-                    </dl>
-                <li class="layui-nav-item">
-                    <a href="javascript:;">财务</a>
-                    <dl class="layui-nav-child">
-                        <dd data-name="edit"><a href="/proxyTeacher" target="option">招生老师报销审核</a></dd>
-                        <dd data-name="pwd"><a href="/pwd" target="option">学生缴费信息</a></dd>
-                        <dd data-name="pwd"><a href="/pwd" target="option">学生家长来校报销</a></dd>
-                        <dd data-name="pwd"><a href="/pwd" target="option">招生老师提成</a></dd>
-                        <dd data-name="pwd"><a href="/pwd" target="option">学生缴费信息</a></dd>
-                    </dl>
-
-
-            </ul>
+                <a id="code_img" href="/register"
+                   class="layadmin-user-jump-change layadmin-link" style="margin-top: 7px;">注册帐号</a>
+            </div>
         </div>
     </div>
 
-    <div class="layui-body" id="LAY_app_body">
-        <!-- 内容主体区域 -->
-        <div class="layadmin-tabsbody-item layui-show"></div>
-
-
-        <div style="padding: 15px;height:100%">
-
-
-            <iframe id="option" name="option" src="/users"
-                    style="overflow: visible;" scrolling="no" frameborder="no" width="100%" height="100%"></iframe>
-
-        </div>
-
-        <div class="layui-footer">
-            <!-- 底部固定区域 -->
-            © itxdl.cn
-        </div>
+    <div class="layui-trans layadmin-user-login-footer">
+        <%--https://www.jianshu.com/p/be7dee1b69a0--%>
+        <p>© 2019 <a href="javascript:;" target="_blank">柴英兵</a></p>
+        <p>
+            <span><a href="https://blog.csdn.net/weixin_40074861/article/details/101519204"
+                     target="_blank">前往我的博客</a></span>
+        </p>
     </div>
 
-    <script>
-        //JavaScript代码区域
-        layui.use('element', function () {
-            var element = layui.element;
+</div>
+
+<script src="layui/layui.js"></script>
+<script>
+    $(document).ready(function () {
+        if (window != top) {
+            top.location.href = location.href;
+        }
+    });
+</script>
+<script>
+    $(function () {
+        $("#code_img").click(function () {
+            $(this).attr("src", "layuiadmin/verifyCode?id=" + Math.random());
+        });
+    });
+
+    layui.use(['form', 'jquery'], function () {
+        $ = layui.jquery
+            , layer = layui.layer
+            , form = layui.form
+            , router = layui.router()
+            , search = router.search;
+
+
+        form.render();
+
+        //提交
+        form.on('submit(LAY-user-login-submit)', function (obj) {
+            $.ajax({
+                type: "POST",  //提交方式
+                dataType: 'json',
+                url: "${pageContext.request.contextPath}/layuiadmin/login",//路径
+                data: obj.field, //数据，这里使用的是Json格式进行传输  JSON.stringify(obj.field)
+                success: function (res) {//返回数据根据结果进行相应的处理
+                    if (res.msg == '1') {
+                        location.href = "${pageContext.request.contextPath}/jsp/index.jsp";
+                    }
+                    if (res.msg == '2') {
+                        layer.msg('用户名或密码错误', {icon: 5, shade: [0.5, '#000000'], shadeClose: true});
+
+                        return false;
+                    }
+                    if (res.msg == '3') {
+                        layer.msg('验证码错误', {icon: 5, shade: [0.5, '#000000'], shadeClose: true});
+                        return false;
+                    }
+                }
+            });
 
         });
-    </script>
 
+    });
+</script>
 </body>
 </html>
