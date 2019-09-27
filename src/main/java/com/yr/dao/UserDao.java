@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 @Mapper
 public interface UserDao {
 
+    @Select("select * from user where username=#{username} and password=#{password}")
     public User getUser(String username, String password);
 
     public int changePwd(String username, String oldPassword, String repassword);

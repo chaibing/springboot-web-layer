@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IndexController {
 
 
-   @RequestMapping("/index")
-   public String index() {
+    @RequestMapping("/index")
+    public String index() {
 
-       return "/index";
-   }
+        return "/index";
+    }
 
     @RequestMapping("/userEdit")
     public String userEdit() {
@@ -69,6 +69,12 @@ public class IndexController {
     @RequestMapping("/proxyTeacher")
     public String proxyTeacher() {
         return "/proxy/proxyTeacher";
+    }
+
+
+    @RequestMapping("/homepage")
+    public String homepage() {
+        return "homepage";
     }
 
 

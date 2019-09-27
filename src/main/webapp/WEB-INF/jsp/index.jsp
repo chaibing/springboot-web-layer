@@ -34,22 +34,22 @@
                 <input type="password" name="password" id="login-password" lay-verify="required" placeholder="密码"
                        class="layui-input" value="${password}">
             </div>
-            <%--  验证码
+            <%--  验证码--%>
             <div class="layui-form-item">
-                  <div class="layui-row">
-                      <div class="layui-col-xs7">
-                          <label class="layadmin-user-login-icon layui-icon layui-icon-vercode"
-                                 for="LAY-user-login-vercode"></label>
-                          <input type="text" name="vercode" id="login-vercode" lay-verify="required" placeholder="图形验证码"
-                                 class="layui-input">
-                      </div>
-                      <div class="layui-col-xs5">
-                          <div style="margin-left: 10px;">
-                              <img src="layuiadmin/verifyCode" id="code_img">
-                          </div>
-                      </div>
-                  </div>
-              </div>--%>
+                <div class="layui-row">
+                    <div class="layui-col-xs7">
+                        <label class="layadmin-user-login-icon layui-icon layui-icon-vercode"
+                               for="LAY-user-login-vercode"></label>
+                        <input type="text" name="vercode" id="login-vercode" lay-verify="required" placeholder="图形验证码"
+                               class="layui-input">
+                    </div>
+                    <div class="layui-col-xs5">
+                        <div style="margin-left: 10px;">
+                            <img src="layuiadmin/verifyCode" id="code_img">
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="layui-form-item" style="margin-bottom: 20px;">
                 <input type="checkbox" name="remember" lay-skin="primary" title="记住密码">
                 <!-- <a href="forget.html" class="layadmin-user-jump-change layadmin-link" style="margin-top: 7px;">忘记密码？</a> -->
@@ -62,7 +62,6 @@
                 <a href="javascript:;"><i class="layui-icon layui-icon-login-qq"></i></a>
                 <a href="javascript:;"><i class="layui-icon layui-icon-login-wechat"></i></a>
                 <a href="javascript:;"><i class="layui-icon layui-icon-login-weibo"></i></a>
-
                 <a id="code_img" href="/register"
                    class="layadmin-user-jump-change layadmin-link" style="margin-top: 7px;">注册帐号</a>
             </div>
@@ -114,7 +113,7 @@
                 data: obj.field, //数据，这里使用的是Json格式进行传输  JSON.stringify(obj.field)
                 success: function (res) {//返回数据根据结果进行相应的处理
                     if (res.msg == '1') {
-                        location.href = "${pageContext.request.contextPath}/jsp/index.jsp";
+                        location.href = "${pageContext.request.contextPath}/homepage";
                     }
                     if (res.msg == '2') {
                         layer.msg('用户名或密码错误', {icon: 5, shade: [0.5, '#000000'], shadeClose: true});

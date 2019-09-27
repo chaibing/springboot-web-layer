@@ -186,17 +186,12 @@ public class UserController {
     public Map<String, String> userLogin(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws IOException {
         Map<String, String> data = new HashMap<String, String>();
         try {
-            System.out.println(1);
             String username = request.getParameter("username");
             String password = request.getParameter("password");
             String remember = request.getParameter("remember");
             password = DigestUtils.md5Hex(password);
-            System.out.println("username:" + username);
-            System.out.println("password:" + password);
-            String code = request.getParameter("vercode");
+            String code = request.getParameter("vercode");//验证码数字比对
             String cnt = session.getAttribute("code").toString();
-            System.out.println("cnt:" + cnt);
-            System.out.println(code.equals(cnt));
             if (code.equals(cnt)) {
                 User user = userService.login(username, password);
                 System.out.println("user:" + user);
@@ -205,7 +200,7 @@ public class UserController {
                 } else {
 
                     if (remember != null) {
-                        String flag = request.getParameter("remember");
+                        String flag = request.getParameter("remember");//是否需要记住密码
                         System.out.println("flag:" + flag);
                         if (flag != null) {
                             //把对象存入cookie中
