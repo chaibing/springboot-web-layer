@@ -11,5 +11,10 @@ public interface ProxYTeacherService {
     public List<ProxyTeacher> findAlladPageLimtit(int page, int limit);
 
     public List<Rank> findrank();
+
     public void addProxyTeacher(ProxyTeacher proxyTeacher);
+
+    public List<ProxyTeacher> findAllProxyteacher();
+
+    public ProxyTeacher selectidcardByid(String cid);
 }

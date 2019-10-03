@@ -44,8 +44,9 @@ public class ProxyTeacherController {
     }
 
     @RequestMapping("/addteacher")
+    @ResponseBody
     public String addProxyTeacher(ProxyTeacher proxyTeacher) {
-            System.out.println(proxyTeacher+"   "+"获取数据");
+        System.out.println("获取数据" + "      " + proxyTeacher);
         ProxYTeacherService.addProxyTeacher(proxyTeacher);
         return "proxy/proxyTeacher";
     }
@@ -60,4 +61,23 @@ public class ProxyTeacherController {
 
     }
 
+    //查询级别
+    @RequestMapping("/list")
+    @ResponseBody
+    public List<ProxyTeacher> findAllProxyteacher() {
+        List<ProxyTeacher> proxyTeacher = ProxYTeacherService.findAllProxyteacher();
+        return proxyTeacher;
+
+    }
+    /**/
+
+
+    //查询级别
+    @RequestMapping("/selectidcardByid")
+    @ResponseBody
+    public ProxyTeacher selectidcardByid(String cid) {
+        ProxyTeacher proxyTeacher = ProxYTeacherService.selectidcardByid(cid);
+        return proxyTeacher;
+
+    }
 }

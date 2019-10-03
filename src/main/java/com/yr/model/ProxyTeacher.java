@@ -9,8 +9,7 @@ import java.io.Serializable;
  * @create: 2019-09-05 15:35
  **/
 @Data
-public class ProxyTeacher  implements Serializable
-{
+public class ProxyTeacher implements Serializable {
     private Integer id;
     private String number; //年龄
     private String name;
@@ -18,20 +17,21 @@ public class ProxyTeacher  implements Serializable
     private String idcard;//身份证号
     private String area_code;//地址
     private String level_code;                              //级别
-    private String introducer_name;
+    private String introducer_name;//介绍人姓名
     private String join_date;//加入时间
     private String qq;
     private String vx;
     private String phone;//联系电话
+    private String leader_id; //上级人id
+    private String del; //状态 是否在职
 
-        public ProxyTeacher(Integer id, String number, String name) {
-            this.id = id;
-            this.number = number;
-            this.name = name;
-        }
 
-    private String leader_id;                                //上级姓名
-    private String del; //状态
+    public ProxyTeacher(Integer id, String number, String name) {
+        this.id = id;
+        this.number = number;
+        this.name = name;
+    }
+
 
     public ProxyTeacher() {
     }

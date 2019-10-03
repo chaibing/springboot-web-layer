@@ -18,9 +18,10 @@ import java.util.List;
 public interface PointDao {
 
     @Results({
+            @Result(column = "id", property = "id"),
             @Result(column = "points", property = "points")
     })
-    @Select("select points from point  where rank_id= #{id}")
+    @Select("select id,points from point  where rank_id= #{id}")
     public Point selectByrankId(Integer id);
 
 

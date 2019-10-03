@@ -10,6 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class IndexController {
 
+    @RequestMapping("/sanjiliandong")
+    public String sanjiliandong() {
+
+        return "/proxy/sanjiliandong";
+    }
 
     @RequestMapping("/index")
     public String index() {

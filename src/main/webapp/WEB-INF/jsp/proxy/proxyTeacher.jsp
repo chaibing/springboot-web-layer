@@ -42,8 +42,7 @@
             <div class="layui-inline">
                 <label class="layui-form-label">姓名</label>
                 <div class="layui-input-inline">
-                    <input name="name" <%-- 必填项lay-verify="required" --%>autocomplete="off" class="layui-input"
-                           type="text">
+                    <input name="name" autocomplete="off" class="layui-input" type="text">
                 </div>
             </div>
             <div class="layui-inline">
@@ -103,10 +102,12 @@
 </div>
 <!--添加或编辑-->
 <div id="setRole" class="layer_self_wrap" style="width:100%;display:none;">
-    <form id="roleForm" class="layui-form layui-form-pane" method="post" style="margin-top: 20px;"
+    <form id="roleForm" class="<%--layui-form --%>layui-form-pane" method="post" style="margin-top: 20px;"
           action="/proxy/addteacher">
 
-        <input id="pageNum" type="hidden" name="pageNum"/>
+        <%--
+                <input id="pageNum" type="hidden" name="pageNum"/>
+        --%>
         <input id="id" type="hidden" name="id"/>
 
         <div class="layui-form-item">
@@ -124,6 +125,7 @@
                 <input type="radio" name="sex" value="女" title="女" checked>
             </div>
         </div>
+
         <div class="layui-form-item">
             <label class="layui-form-label">身份证号<span style="color:red">*</span></label>
             <div class="layui-input-inline">
@@ -136,6 +138,8 @@
                 <input name="number" type="number" class="layui-input" readonly="readonly" id="Gra_Age"/>
             </div>
         </div>
+
+
         <div class="layui-form-item">
             <label class="layui-form-label">电话<span style="color:red">*</span></label>
             <div class="layui-input-inline">
@@ -143,28 +147,54 @@
                        type="text"/>
             </div>
         </div>
-        <div class="layui-form-item">
-            <div>
-                <label class="layui-form-label">地址<span style="color:red">*</span></label>
-                <div class="layui-input-inline">
-                    <select name="provid" id="provid1" lay-filter="provid">
-                        <option value="">请选择省</option>
-                    </select>
-                </div>
-                <div class="layui-input-inline">
-                    <select name="cityid" id="cityid1" lay-filter="cityid">
-                        <option value="">请选择市</option>
-                    </select>
-                </div>
-                <div class="layui-input-inline">
-                    <select name="areaid" id="areaid1" lay-filter="areaid">
-                        <option value="">请选择县/区</option>
-                    </select>
+        <%--    <div class="layui-form-item">
+                <div>
+                    <label class="layui-form-label">地址<span style="color:red">*</span></label>
+                    <div class="layui-input-inline">
+                        <select name="provid" id="provid1" lay-filter="provid">
+                            <option value="">请选择省</option>
+                        </select>
+                    </div>
+                    <div class="layui-input-inline">
+                        <select name="cityid" id="cityid1" lay-filter="cityid">
+                            <option value="">请选择市</option>
+                        </select>
+                    </div>
+                    <div class="layui-input-inline">
+                        <select name="areaid" id="areaid1" lay-filter="areaid">
+                            <option value="">请选择县/区</option>
+                        </select>
+                    </div>
+
                 </div>
 
             </div>
+    --%>
 
+
+        <%--三级联动 ======================================start--%>
+        <div class="layui-form-item">
+            <label class="layui-form-label">地址<span style="color:red">*</span></label>
+            <div class="layui-input-inline">
+                <select id="sheng" onchange="shi()" name="cid">
+                    <option value="0">-请选择省-</option>
+                </select>
+            </div>
+
+            <div class="layui-input-inline">
+                <select id="area" onchange="xian()" name="aid">
+                    <option value="0">-请选择市-</option>
+                </select>
+            </div>
+
+            <div class="layui-input-inline">
+                <select id="shop" onchange="" name="sid">
+                    <option value="0">-请选择县/区-</option>
+                </select>
+            </div>
         </div>
+
+        <%--三级联动 ======================================end--%>
 
         <div class="layui-form-item">
             <label class="layui-form-label">加入时间<span style="color:red">*</span></label>
@@ -174,71 +204,75 @@
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">级别<span style="color:red">*</span></label>
+            <select type="text" name="level_code" id="selectcid" onchange="jibie()">
+                <option value="0">----请选择-----</option>
+            </select>
+        </div>
+        <%--</div>--%>
+        <div class="layui-form-item">
+            <label class="layui-form-label">点位<span style="color:red">*</span></label>
+            <select type="text" name="points" id="roleDesrc3">
+                <option value="0">----自动带出点位-----</option>
+
+            </select>
+        </div>
+
+        <%--000000000000000000000000000000000000000000000000000000--   废弃%>
+      <%--  <div class="layui-form-item">
+            <label class="layui-form-label">上级人姓名<span style="color:red">*</span></label>
             <div class="layui-input-inline ">
-                <select type="text" name="level_code" id="selectcid" onchange="jibie()">
-                    <option value="0">请选择</option>
+                <select type="text" name="name" id="selectcid_one">
+                    <option value="0">----请选择-----</option>
                 </select>
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">点位<span style="color:red">*</span></label>
+            <label class="layui-form-label">上级人身份证号<span style="color:red">*</span></label>
             <div class="layui-input-inline">
-                <input id="roleDesrc3" <%-- readonly="readonly" --%>name="sdafa" autocomplete="off"
-                       class="layui-input" type="text"/>
-
+                <input id="roleDesrc31" name="idcard " class="layui-input" type="text"/>
             </div>
-        </div>
+        </div>--%>
+
+        <%--000000000000000000000000000000000000000000000000000000--    废弃%>
+        <%----------------------------------------------- start--%>
 
 
         <div class="layui-form-item">
             <label class="layui-form-label">上级人姓名<span style="color:red">*</span></label>
-            <div class="layui-input-inline ">
-                <select type="text" name="level_code" id="selectcid1" onchange="jibie()">
-                    <option value="0">请选择</option>
+            <div class="layui-input-inline">
+                <select id="superior_name" onchange="HuoquIdcard()" name="cid">
+                    <option value="0">-请选择-</option>
+                </select>
+            </div>
+
+        </div>
+        <div class="layui-form-item">
+
+            <label class="layui-form-label">上级身份证<span style="color:red">*</span></label>
+            <div class="layui-input-inline">
+                <select id="idcard" name="idcard">
+                    <option value="0">-请选择-</option>
                 </select>
             </div>
         </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">身份证号<span style="color:red">*</span></label>
-            <div class="layui-input-inline">
-                <input id="roleDesrc31" readonly="readonly" name="sdafa" autocomplete="off"
-                       class="layui-input" type="text"/>
 
-            </div>
-        </div>
 
-        <%--
-               <div class="layui-form-item">
-                   <label class="layui-form-label">上级人姓名<span style="color:red">*</span></label>
-                   <div class="layui-input-inline">
-                       <input id="aa" name="name" lautocomplete="off" class="layui-input"
-                              type="text"/>
-                   </div>
-               </div>
-               <div class="layui-form-item">
-                   <label class="layui-form-label">身份证号<span style="color:red">*</span></label>
-                   <div class="layui-input-inline">
-                       <input id="idcard" name="roleDesc" lay-verify="identity"
-                              class="layui-input"
-                              type="text"/>
-                   </div>
-               </div>--%>
+        <%----------------------------------------------- end--%>
+
         <div class="layui-form-item">
             <label class="layui-form-label">状态<span style="color:red">*</span></label>
             <div class="layui-input-inline">
-                <select name="permissions" xm-select="permissions">
-                    <option value="1">----请选择-----</option>
+                <select name="del" xm-select="permissions">
+                    <option value="">----请选择-----</option>
                     <option value="1">在职</option>
                     <option value="2">离职</option>
-
                 </select>
             </div>
         </div>
-
         <div class="layui-form-item">
             <label class="layui-form-label">权限<span style="color:red">*</span></label>
             <div class="layui-input-inline">
-                <select name="permissions" xm-select="permissions">
+                <select name="power" xm-select="permissions">
                     <option value="1">----请选择-----</option>
                     <option value="1">北京</option>
                     <option value="2">上海</option>
@@ -555,12 +589,23 @@
             success: function (data) {
                 $.each(data, function (index, category) {
                     var cid = data[index].id;
-
                     var cname = data[index].name;
                     $("#selectcid").append("<option value='" + cid + "'>" + cname + "</option>");
                     //form.render()渲染将option添加进去
                     form.render();
                 });
+
+                /*-------------------------------------*/
+                $.each(data, function (index, category) {
+                    var id = data[index].point.id;
+                    var points = data[index].point.points;
+                    $("#roleDesrc3").empty();
+                    $("#roleDesrc3").append("<option value='" + id + "'>" + points + "</option>");
+                    //form.render()渲染将option添加进去
+                    form.render();
+                });
+
+
             }
         });
     });
@@ -569,81 +614,32 @@
 <%--表单下拉框动态获取数据  https://blog.csdn.net/duguyuyun12345/article/details/82818193  end--%>
 
 
-<%--根据 级别获取点位========================================== start --%>
+<%--表单下拉框动态获取数据  获取上级人信息  https://blog.csdn.net/duguyuyun12345/article/details/82818193  start--%>
+
 
 <script>
-    //身份证改变事件（孕妇）
-    var jibie = function () {
-        //获取身份证号
-        var idCard = $('#Gra_IDCard').val();
-        alert("sdfasdf")
-        //判断身份证长度
-        if (idCard.length == 18) {
-            //获取计算后出生日期
-            var birthDateStr = getBirthDate(idCard);
-            //设置出生日期
-            $('#Gra_BirthDate').val(birthDateStr);
-
-            //获取当前的日期
-            var nowDateStr = getNowDate();
-            //获取计算后年龄(两个日期之间)
-            var age = getAge(birthDateStr, nowDateStr);
-            //设置年龄
-            $('#Gra_Age').val(age);
-        }
-    }
-
-    //根据身份证号计算出生日期
-    var getBirthDate = function (IDCard) {
-        //获取身份证号的年、月、日
-        var year = IDCard.substring(6, 10);
-        var month = IDCard.substring(10, 12);
-        var day = IDCard.substring(12, 14);
-        //拼接成出生日期
-        var birthDate = year + '-' + month + '-' + day;
-        return birthDate;
-    }
-
-    //根据两个日期计算年龄（是否过生日）
-    var getAge = function (startDateStr, endDateStr) {
-        //计算两个日期相差多少年
-        var startDate = new Date(startDateStr);
-        var endDate = new Date(endDateStr);
-        var yearNum = endDate.getFullYear() - startDate.getFullYear();
-        //获取两个日期（月+日）部分
-        var sStr = startDateStr.substring(5, 10);
-        var eStr = endDateStr.substring(5, 10);
-        //判断两个日期大小
-        //判断是否过生日
-        if (new Date(sStr) <= new Date(eStr)) {
-            return yearNum + 1;
-        } else {
-            return yearNum;
-        }
-    }
-
-    ///获取当前日期
-    var getNowDate = function () {
-        var d = new Date();
-        var year = d.getFullYear();
-        var month = d.getMonth() + 1;
-        var day = d.getDate();
-        var dateStr = year + '-' + getFormatDate(month) + '-' + getFormatDate(day);
-        return dateStr;
-    }
-
-    //格式化日期的月份或天数的显示（小于10，在前面增加0）
-    function getFormatDate(value) {
-        if (value == undefined || value == "") {
-            return '';
-        }
-        var str = value;
-        if (parseInt(value) < 10) {
-            str = '0' + value;
-        }
-        return str;
-    }
+    layui.use('form', function () {
+        var form = layui.form;
+        $.ajax({
+            url: '/proxy/list',//获取上级人姓名 身份证号
+            dataType: 'json',
+            type: 'post',
+            success: function (data) {
+                $.each(data, function (index, category) {
+                    var cid = data[index].id;
+                    var cname = data[index].name;
+                    $("#selectcid_one").append("<option value='" + cid + "'>" + cname + "</option>"); //往上级人下拉框里面填充数据
+                    //form.render()渲染将option添加进去
+                    form.render();
+                });
+            }
+        });
+    });
 </script>
+
+
+<%--表单下拉框动态获取数据  获取上级人信息  https://blog.csdn.net/duguyuyun12345/article/details/82818193     end--%>
+
 
 <%--根据 级别获取点位=====================================================   end--%>
 
@@ -673,6 +669,87 @@
     });
 </script>
 <%--银行卡获取图片===================================================      end--%>
+
+<%--三级联动===================================================      start--%>
+<script type="text/javascript">
+    $(function () {  //一开始初始化加载全部一级城市
+        $.post(
+            "area/Province",
+            {},
+            function (data) {
+                for (var i = 0; i < data.length; i++) {
+                    $("#sheng").append("<option  value='" + data[i].code + "'>" + data[i].name + "</option>")
+                }
+            }
+        )
+    })
+
+    function shi() {//加载二级城市
+        var cid = $("#sheng").val();
+        $.post(
+            "area/city",
+            {cid: cid},
+            function (data) {
+                $("#area").empty();
+                for (var i = 0; i < data.length; i++) {
+                    $("#area").append("<option value='" + data[i].code + "'>" + data[i].name + "</option>")
+                }
+            }
+        )
+    }
+
+    function xian() {
+        var aid = $("#area").val();
+        $.post(
+            "area/area1",
+            {aid: aid},
+            function (data) {
+                $("#shop").empty();
+                for (var i = 0; i < data.length; i++) {
+                    $("#shop").append("<option value='" + data[i].code + "'>" + data[i].name + "</option>")
+                }
+            }
+        )
+    }
+
+</script>
+
+
+<%--三级联动===================================================      end--%>
+
+
+<%--000000000000000000000000000000000000000000000000000000000000000   start--%>
+
+<script type="text/javascript">
+    $(function () {  //一开始初始化加载全部一级城市
+        $.post(
+            "proxy/list",
+            {},
+            function (data) {
+                for (var i = 0; i < data.length; i++) {
+                    $("#superior_name").append("<option  value='" + data[i].id + "'>" + data[i].name + "</option>")
+                }
+            }
+        )
+    })
+
+    function HuoquIdcard() {//加载二级城市
+        var cid = $("#superior_name").val();
+        $.post(
+            "proxy/selectidcardByid",
+            {cid: cid},
+            function (data) {
+
+                var id = data.id
+                var idcard = data.idcard
+                $("#idcard").empty();
+                $("#idcard").append("<option value='" + data.id + "'>" + data.idcard + "</option>")
+            }
+        )
+    }
+</script>
+<%--000000000000000000000000000000000000000000000000000000000000000   start--%>
+
 
 </body>
 </html>

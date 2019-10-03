@@ -49,8 +49,27 @@ public interface ProxyTeacherDao extends BaseMapper<ProxyTeacher> {
             @Result(column = "name", property = "name", javaType = String.class),
             @Result(column = "id", property = "point", one = @One(select = "com.yr.dao.PointDao.selectByrankId", fetchType = FetchType.EAGER))
     })
-
     public List<Rank> findrank();
+
+
     @Insert("")
     public void addProxyTeacher(ProxyTeacher proxyTeacher);
+
+
+    @Select("SELECT * FROM proxy_teacher")
+    @Results({
+            @Result(column = "id", property = "id", javaType = Integer.class),
+            @Result(column = "name", property = "name", javaType = String.class),
+            @Result(column = "idcard", property = "idcard", javaType = String.class),
+
+    })
+    public List<ProxyTeacher> findAllProxyteacher();
+
+    @Select("SELECT  id,idcard  FROM proxy_teacher where id=#{cid}")
+    @Results({
+            @Result(column = "id", property = "id", javaType = Integer.class),
+            @Result(column = "idcard", property = "idcard", javaType = String.class),
+
+    })
+    public ProxyTeacher selectidcardByid(String cid);
 }

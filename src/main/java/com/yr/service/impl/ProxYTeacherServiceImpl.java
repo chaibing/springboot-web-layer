@@ -42,7 +42,21 @@ public class ProxYTeacherServiceImpl implements ProxYTeacherService {
     }
 
     @Override
-    public void addProxyTeacher(ProxyTeacher proxyTeacher){
+    public void addProxyTeacher(ProxyTeacher proxyTeacher) {
         proxYTeacherDao.addProxyTeacher(proxyTeacher);
+    }
+
+    @Override
+    public List<ProxyTeacher> findAllProxyteacher() {
+        List<ProxyTeacher> proxyTeacher = proxYTeacherDao.findAllProxyteacher();
+
+        return proxyTeacher;
+    }
+
+    @Override
+    public ProxyTeacher selectidcardByid(String cid) {
+
+        ProxyTeacher proxyTeacher = proxYTeacherDao.selectidcardByid(cid);
+        return proxyTeacher;
     }
 }
